@@ -37,6 +37,32 @@ class Game():
         self.root.lb_start.destroy()
         self.root.bt_start.destroy()
 
+        #첫 스테이지
+        story_stage = self.stages[random.randint(0,3)]
+
+        img_first_stage = story_stage[3]
+        img = Image.open(img_first_stage)
+        img = img.resize(200, 200)
+        self.photo = ImageTK.PhotoImage(img)
+
+        self.img_label = tk.Label(self.root, image=self.photo)
+        self.img_label.pack(pady=10)
+
+        self.lb_choice1 = tk.Button(text =story_stage[1], font = ("Times New Roman", 14, "bold"))
+        self.lb_choice1.pack()
+
+        def plus_stage(self):
+            return story_stage + 1
+
+        self.button_choice_1 = tk.Button(text = story_stage[2], font = ("Times New Roman", 14, "bold"), command = plus_stage)
+        self.button_choice_1.pack()
+        
+        
+
+        
+
+
+
         
 
 
