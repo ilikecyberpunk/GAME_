@@ -38,24 +38,32 @@ class Game():
         self.root.bt_start.destroy()
 
         #첫 스테이지
-        story_stage = self.stages[random.randint(0,3)]
+        story_stage1 = self.stages[0]
 
-        img_first_stage = story_stage[3]
+        img_first_stage = story_stage1[3]
         img = Image.open(img_first_stage)
         img = img.resize(200, 200)
         self.photo = ImageTK.PhotoImage(img)
 
-        self.img_label = tk.Label(self.root, image=self.photo)
-        self.img_label.pack(pady=10)
+        self.img_label1 = tk.Label(self.root, image=self.photo)
+        self.img_label1.pack(pady=10)
 
-        self.lb_choice1 = tk.Button(text =story_stage[1], font = ("Times New Roman", 14, "bold"))
-        self.lb_choice1.pack()
+        self.status_lb1 = tk.Label(self.root, text = story_stage1[0])
+        self.status_lb1.pack()
 
-        def plus_stage(self):
-            return story_stage + 1
+        self.radio_var_stage1 = tk.StringVar(value = story_stage1[1])
+        self.radio_1_choice1 = tk.Radiobutton(self.root, text = story_stage1[1], variable= self.radio_var_stage1, value = story_stage1[1])
+        self.radio_2_choice1 = tk.Radiobutton(self.root, text = story_stage1[2], variable=self.radio_var_stage1, value=story_stage1[2])
 
-        self.button_choice_1 = tk.Button(text = story_stage[2], font = ("Times New Roman", 14, "bold"), command = plus_stage)
-        self.button_choice_1.pack()
+        def next_stage(self):
+            
+
+        self.button_choice1 = tk.Button(self.root, text = "선택", command=next_stage)
+        self.button_choice1.pack()
+
+        
+
+    
         
         
 
