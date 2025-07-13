@@ -25,6 +25,7 @@ class Game():
             ("레이는 당신을 떠납니다", "24.jpg")
         ]
 
+        #호감도
         self.point = 0
 
         self.root.lb_start = tk.Label(root, text = "레이게임", font = ("Times New Roman", 20, "bold"), fg="purple")
@@ -53,13 +54,44 @@ class Game():
 
         self.radio_var_stage1 = tk.StringVar(value = story_stage1[1])
         self.radio_1_choice1 = tk.Radiobutton(self.root, text = story_stage1[1], variable= self.radio_var_stage1, value = story_stage1[1])
+        self.radio_1_choice1.pack()
         self.radio_2_choice1 = tk.Radiobutton(self.root, text = story_stage1[2], variable=self.radio_var_stage1, value=story_stage1[2])
-
-        def next_stage(self):
-            
+        self.radio_2_choice1.pack()
 
         self.button_choice1 = tk.Button(self.root, text = "선택", command=next_stage)
         self.button_choice1.pack()
+
+        def next_stage(self):
+            if self.radio_var_stage1 == story_stage1[1]:
+                self.point += 1
+
+            self.img_label1.destroy()
+            self.status_lb1.destroy()
+            self.radio_1_choice1.destroy()
+            self.radio_2_choice1.destroy()
+
+            #두 번째 스테이지
+            self.root.lb_second = tk.Label(self.root, text = self.stages[1][0])
+            self.root.lb_second.pack()
+
+            img2 = Image.open(self.stages[1][3])
+            img2 = img2.resize(200, 200)
+            self.photo2 = ImageTK.PhotoImage(img2)
+            
+            self.imagelb2 = tk.Label(self.root, image=self.photo2)
+            self.imagelb2.pack()
+
+            self.radiovar2 = tk.StringVar(value = self.stages[1][1])
+            self.radio_1_choice2 = tk.Radiobutton(self.root, text = self.stages[1][1], value = self.stages[1][1], variable= self.radiovar2)
+            self.radio_1_choice2.pack()
+            self.radio_2_choice2 = tk.Radiobutton(self.root, text = self.stages[1][2], value= self.stages[1][2], variable=self.radiovar2)
+            self.radio_2_choice2.pack()
+            
+            self.bt_next = tk.Button(self.root, text = "선택", command = thirdstage)
+            self.bt_next.pack()
+
+            def thirdstage(self):
+                
 
         
 
