@@ -28,15 +28,15 @@ class Game():
         #호감도
         self.point = 0
 
-        self.root.lb_start = tk.Label(root, text = "레이게임", font = ("Times New Roman", 20, "bold"), fg="purple")
-        self.root.lb_start.pack(padx=10)
+        self.rootlb_start = tk.Label(root, text = "레이게임", font = ("Times New Roman", 20, "bold"), fg="purple")
+        self.rootlb_start.pack(padx=10)
 
-        self.root.bt_start = tk.Button(root, text = "시작", command = start_game)
-        self.root.bt_start.pack(padx=2)
+        self.rootbt_start = tk.Button(root, text = "시작", command = start_game)
+        self.rootbt_start.pack(padx=2)
 
     def start_game(self):
-        self.root.lb_start.destroy()
-        self.root.bt_start.destroy()
+        self.rootlb_start.destroy()
+        self.rootbt_start.destroy()
 
         #첫 스테이지
         story_stage1 = self.stages[0]
@@ -58,9 +58,6 @@ class Game():
         self.radio_2_choice1 = tk.Radiobutton(self.root, text = story_stage1[2], variable=self.radio_var_stage1, value=story_stage1[2])
         self.radio_2_choice1.pack()
 
-        self.button_choice1 = tk.Button(self.root, text = "선택", command=next_stage)
-        self.button_choice1.pack()
-
         def next_stage(self):
             if self.radio_var_stage1 == story_stage1[1]:
                 self.point += 1
@@ -71,8 +68,8 @@ class Game():
             self.radio_2_choice1.destroy()
 
             #두 번째 스테이지
-            self.root.lb_second = tk.Label(self.root, text = self.stages[1][0])
-            self.root.lb_second.pack()
+            self.rootlb_second = tk.Label(self.root, text = self.stages[1][0])
+            self.rootlb_second.pack()
 
             img2 = Image.open(self.stages[1][3])
             img2 = img2.resize(200, 200)
@@ -86,11 +83,50 @@ class Game():
             self.radio_1_choice2.pack()
             self.radio_2_choice2 = tk.Radiobutton(self.root, text = self.stages[1][2], value= self.stages[1][2], variable=self.radiovar2)
             self.radio_2_choice2.pack()
+
+            def thirdstage(self):
+                self.rootlb_second.destroy()
+                self.imagelb2.destroy()
+                self.radio_1_choice2.destroy()
+                self.radio_2_choice2.destroy()
+
+                #세 번째 스테이지
+                self.rootlb_third = tk.Label(self.root, text = self.stages[2][0])
+                self.rootlb_third.pack()
+                
+                img = Image.open(self.stages[2][3])
+                img = img.resize(200, 200)
+                self.photo3 = ImageTK.PhotoImage(img)
+                
+                self.imagelb3 = tk.Label(self.root, image=self.photo3)
+                self.imagelb3.pack()
+                
+                self.radiovar3 = tk.StringVar(value= self.stages[2][1])
+                self.radiobutton3 = tk.Radiobutton(self.root, text = self.stages[2][1], value = self.stages[2][1], variable= self.radiovar3)
+                self.radiobutton3.pack()
+                self.radiobutton3_1 = tk.Radiobutton(self.root, text = self.stages[2][2], value = self.stages[2][2], variable= self.radiovar3)
+                self.radiobutton3_1.pack()
+                
+                def finalstage(self):
+                    
+
+                self.finalstage = tk.Button(self.root, text = "선택", command = finalstage)
+                self.finalstage.pack()
             
             self.bt_next = tk.Button(self.root, text = "선택", command = thirdstage)
             self.bt_next.pack()
 
-            def thirdstage(self):
+        self.button_choice1 = tk.Button(self.root, text = "선택", command=next_stage)
+        self.button_choice1.pack()
+
+        
+
+            
+                
+                
+
+
+                
                 
 
         
