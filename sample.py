@@ -60,7 +60,7 @@ class Game():
 
         def next_stage(self):
             if self.radio_var_stage1 == story_stage1[1]:
-                self.point += 1
+                return self.point + 1
 
             self.img_label1.destroy()
             self.status_lb1.destroy()
@@ -85,6 +85,9 @@ class Game():
             self.radio_2_choice2.pack()
 
             def thirdstage(self):
+                if self.radiovar2 == self.stages[1][1]:
+                    return self.point +1
+
                 self.rootlb_second.destroy()
                 self.imagelb2.destroy()
                 self.radio_1_choice2.destroy()
@@ -108,6 +111,22 @@ class Game():
                 self.radiobutton3_1.pack()
                 
                 def finalstage(self):
+                    self.rootlb_third.destroy()
+                    self.imagelb3.destroy()
+                    self.radiobutton3.destroy()
+                    self.radiobutton3_1.destroy()
+
+                    if self.radiovar3 == self.stages[2][2]:
+                        return self.point
+                    
+                    self.lb_last = tk.Label(self.root, text = self.stages[3][0])
+                    self.lb_last.pack()
+
+                    img = Image.open(self.stages[3][3])
+                    img = img.resize(200, 200)
+                    self.photo_last = ImageTK.PhotoImage(img)
+
+                    self.lb_img_last = tk.Label(self.root, )
                     
 
                 self.finalstage = tk.Button(self.root, text = "선택", command = finalstage)
@@ -118,6 +137,8 @@ class Game():
 
         self.button_choice1 = tk.Button(self.root, text = "선택", command=next_stage)
         self.button_choice1.pack()
+
+        
 
         
 
